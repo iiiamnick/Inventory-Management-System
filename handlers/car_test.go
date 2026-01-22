@@ -10,7 +10,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestcarAdd(t *testing.T) {
+func TestCarAdd(t *testing.T) {
 	config.ConnectDB()
 	app := fiber.New()
 	app.Post("/cars", CreateCar)
