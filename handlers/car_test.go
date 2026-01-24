@@ -33,3 +33,19 @@ func TestCarAdd(t *testing.T) {
 
 	assert.Equal(t, fiber.StatusCreated, resp.StatusCode)
 }
+
+func TestCarGet(t *testing.T) {
+	config.ConnectDB()
+	app := fiber.New()
+	app.Get("/cars/:id", GetCar)
+
+	req, _ := http.NewRequest("GET", "/cars/5", nil)
+	req.Header.Set("Content-Type", "application/json")
+
+	resp, err := app.Test(req, 5000)
+	if err != nil {
+		t.Fatalf("request failed: %v", err)
+	}
+
+	assert.Equal(t, fiber.StatusOK, resp.StatusCode)
+}

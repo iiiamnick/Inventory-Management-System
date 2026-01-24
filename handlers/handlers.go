@@ -46,7 +46,6 @@ func GetCar(c *fiber.Ctx) error {
 		})
 	}
 
-	fmt.Println("Car with the given id found:", id)
 	return c.Status(fiber.StatusOK).JSON(car)
 
 }
